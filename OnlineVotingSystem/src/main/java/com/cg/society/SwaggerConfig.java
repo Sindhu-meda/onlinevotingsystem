@@ -27,7 +27,7 @@ public class SwaggerConfig {
 
  private Predicate<String> postPaths() {
 
-  return or(regex("/ElectionOfficer/.*"), regex("/NominatedCandidate/.*"),regex("/RegisteredSocietyVoters/.*"),regex("/VotedList/.*"));
+  return or(regex("/ElectionOfficer/.*"), regex("/NominatedCandidate/.*"),regex("/RegisteredSocietyVoters/.*"),regex("/VotedList/.*"),regex("/ElectionResult/.*"),regex("/User/.*"),regex("/CooperativeSociety/.*"));
  }
 
  private ApiInfo apiInfo() {

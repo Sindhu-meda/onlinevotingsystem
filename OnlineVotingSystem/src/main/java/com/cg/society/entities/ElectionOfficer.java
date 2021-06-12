@@ -63,18 +63,18 @@ public class ElectionOfficer
 	@Column(name="pincode")
 	private int pincode;
 
-	@OneToMany(targetEntity=NominatedCandidate.class,cascade=CascadeType.MERGE)
-	@JoinColumn(name="EoNi_fk",referencedColumnName="id")
-	//@OneToMany(mappedBy= "candidateid",cascade=CascadeType.ALL)
-	private List<NominatedCandidate> candidate;
-	
-	@OneToMany(targetEntity=RegisteredSocietyVoters.class,cascade=CascadeType.MERGE)
-	@JoinColumn(name="EoRs_fk",referencedColumnName="id")
-	private List<RegisteredSocietyVoters> voter;
-	
-	@OneToMany(targetEntity=VotedList.class,cascade=CascadeType.MERGE)
-	@JoinColumn(name="EoVl=fk",referencedColumnName="id")
-	private List<VotedList> list;
+//	@OneToMany(targetEntity=NominatedCandidate.class,cascade=CascadeType.MERGE)
+//	@JoinColumn(name="EoNi_fk",referencedColumnName="id")
+//	//@OneToMany(mappedBy= "candidateid",cascade=CascadeType.ALL)
+//	private List<NominatedCandidate> candidate;
+//	
+//	@OneToMany(targetEntity=RegisteredSocietyVoters.class,cascade=CascadeType.MERGE)
+//	@JoinColumn(name="EoRs_fk",referencedColumnName="id")
+//	private List<RegisteredSocietyVoters> voter;
+//	
+//	@OneToMany(targetEntity=VotedList.class,cascade=CascadeType.MERGE)
+//	@JoinColumn(name="EoVl=fk",referencedColumnName="id")
+//	private List<VotedList> list;
 
 
 

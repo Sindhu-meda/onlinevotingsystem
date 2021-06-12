@@ -75,7 +75,7 @@ public class RegisteredSocietyVoters {
 	@Column(name= "Pincode")
 	@NotNull
 	private Integer pincode;
-//	
+	
 //	@OneToOne(cascade =CascadeType.ALL)
 //	CooperativeSociety Society;
 	

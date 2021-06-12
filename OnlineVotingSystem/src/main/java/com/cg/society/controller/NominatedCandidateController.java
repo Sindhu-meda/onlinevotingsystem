@@ -18,8 +18,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.cg.society.entities.NominatedCandidate;
+import com.cg.society.entities.VotedList;
 import com.cg.society.exception.NominatedCandidateNotFoundException;
+import com.cg.society.exception.VoteAlreadyCastException;
 import com.cg.society.service.INominatedCandidateService;
+import com.cg.society.service.VotedListService;
+
 import io.swagger.annotations.ApiOperation;
 
 @RestController
@@ -27,6 +31,8 @@ import io.swagger.annotations.ApiOperation;
 public class NominatedCandidateController 
 {
 	Logger logger = LoggerFactory.getLogger(NominatedCandidateController .class);
+	@Autowired
+	private VotedListService vLService;
 	@Autowired
 	private INominatedCandidateService service;
 
@@ -48,9 +54,9 @@ public class NominatedCandidateController
 
 	@GetMapping("/getAll")
 	@ApiOperation("Fetch all NomainatedCandidate Details")
-	public List<NominatedCandidate> fetch() {
+	public List<NominatedCandidate> viewNominatedCandidateList() {
 		logger.info("Fetching all NominatedCandidate records!!");
-		return service.fetchAll();
+		return service.viewNominatedCandidateList();
 	}
 	@PostMapping("/save")
 	@ApiOperation("Add a NominatedCandidate details")
@@ -72,6 +78,14 @@ public class NominatedCandidateController
 		logger.info("Deleting a NominatedCandidate!!");
 		service.deleteNominatedCandidate(id);
 		return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+	}
+	@PostMapping("/saveVL")
+	public void getCastVotedList(@Valid @RequestBody VotedList votedList) throws VoteAlreadyCastException
+	{
+		
+		vLService.castVotedList(votedList);
+	
+
 	}
 
 

@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.cg.society.entities.NominatedCandidate;
+import com.cg.society.entities.VotedList;
 import com.cg.society.exception.NominatedCandidateNotFoundException;
 import com.cg.society.repository.NominatedCandidateRepository;
 @Service
@@ -23,15 +24,20 @@ public class NominatedCandidateServiceImpl implements INominatedCandidateService
 		logger.info("inside addNominatedCandidate method of NominatedCandidateServiceImpl");
 		return repository.save(nominatedcandidate);
 	}
-	@Override
-	public List<NominatedCandidate> fetchAll() 
-	{
-		return repository.findAll();
-	}
+//	@Override
+//	public List<NominatedCandidate> fetchAll() 
+//	{
+//		return repository.findAll();
+//	}
 	@Override
 	public void updateNominatedCandidate(NominatedCandidate nominatedcandidate)
 	{
 		repository.save(nominatedcandidate);	
+	}
+	@Override
+	public List<NominatedCandidate> viewNominatedCandidateList() {
+
+		return repository.findAll();
 	}
 	@Override
 	public NominatedCandidate fetchById(int id) throws NominatedCandidateNotFoundException 
@@ -52,6 +58,6 @@ public class NominatedCandidateServiceImpl implements INominatedCandidateService
 	    repository.deleteById(id); 
 		
 	}
-
+	
 	
 }

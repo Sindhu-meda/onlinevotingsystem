@@ -2,9 +2,12 @@ package com.cg.society.service;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.stereotype.Service;
 
 import com.cg.society.entities.RegisteredSocietyVoters;
+import com.cg.society.entities.VotedList;
 import com.cg.society.exception.RegisteredVoterNotFoundException;
 
 
@@ -29,6 +32,8 @@ public interface IRegisteredSocietyService {
 	public List<RegisteredSocietyVoters> fetchAll();
 
 	public RegisteredSocietyVoters addRegisteredSocietyVoters(RegisteredSocietyVoters registeredsociety);
+
+
 	
 
 }

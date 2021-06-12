@@ -19,8 +19,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cg.society.entities.ElectionOfficer;
+import com.cg.society.entities.NominatedCandidate;
+import com.cg.society.entities.VotedList;
 import com.cg.society.exception.ElectionOfficerDetailsNotFoundException;
+import com.cg.society.exception.NominatedCandidateNotFoundException;
+import com.cg.society.exception.RegisteredVoterNotFoundException;
 import com.cg.society.service.IElectionOfficerService;
+import com.cg.society.service.INominatedCandidateService;
+import com.cg.society.service.IRegisteredSocietyService;
+import com.cg.society.service.VotedServiceImpl;
 
 import io.swagger.annotations.ApiOperation;
 @RestController
@@ -30,7 +37,13 @@ public class ElectionOfficerController
 {
 	Logger logger = LoggerFactory.getLogger(ElectionOfficerController .class);
 	@Autowired
-	private IElectionOfficerService service;
+	private IRegisteredSocietyService rSocietyServices;
+	@Autowired
+	private INominatedCandidateService nCServices;
+	@Autowired
+	private VotedServiceImpl voteServices;
+	@Autowired
+	private IElectionOfficerService eOfficerService;
 
 	@GetMapping("/{name}")
 	@ApiOperation("Greetings API")
@@ -45,35 +58,82 @@ public class ElectionOfficerController
 	public ElectionOfficer fetchById(@PathVariable int id) throws NumberFormatException, ElectionOfficerDetailsNotFoundException
 	{
 		logger.info("Inside fetchById %s", id);
-		return service.fetchById(id);
+		return eOfficerService.fetchById(id);
 	}
 	
 	@GetMapping("/getAll")
 	@ApiOperation("Fetch all ElectionOfficer Details")
 	public List<ElectionOfficer> fetch() {
 		logger.info("Fetching all ElectionOfficer records!!");
-		return service.fetchAll();
+		return eOfficerService.fetchAll();
 	}
 	@PostMapping("/save")
 	@ApiOperation("Add a ElectionOfficer details")
 	public ResponseEntity<ElectionOfficer> save(@Valid @RequestBody ElectionOfficer electionofficer) {
 		logger.info("Adding a electionofficer : " + electionofficer);
-		ElectionOfficer e = service.addElectionOfficer(electionofficer);
+		ElectionOfficer e = eOfficerService.addElectionOfficer(electionofficer);
 		return new ResponseEntity<>(e, HttpStatus.CREATED);
 	}
 	@PutMapping("/update")
 	@ApiOperation("Update an Existing ElectionOfficer details")
 	public void update(@Valid @RequestBody ElectionOfficer electionofficer) {
 		logger.info("Updating a ElectionOfficerDetails!!");
-		service.updateElectionOfficer(electionofficer);
+		eOfficerService.updateElectionOfficer(electionofficer);
 	}
 
 	@DeleteMapping("/delete/{id}")
 	@ApiOperation("Delete an Existing ElectionOfficer details")
 	public ResponseEntity<Void> delete(@PathVariable int id) throws ElectionOfficerDetailsNotFoundException {
 		logger.info("Deleting a ElectionOfficerDetails!!");
-		service.deleteElectionOfficer(id);
+		eOfficerService.deleteElectionOfficer(id);
 		return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
 	}
+	@DeleteMapping("/deleteRSV/{id}")
+	@ApiOperation("delete an Existing RegisteredSocietyVoters Record")
+	public ResponseEntity<Void> deleteRegistered(@PathVariable int id) throws RegisteredVoterNotFoundException {
+		logger.info("Deleting a customer!!");
+		 rSocietyServices.deleteRegisteredSocietyVoter(id);
+		return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+	}
+
+	@GetMapping("/getByIdNC/{id}")
+	@ApiOperation("Get NominatedCandidate By ID")
+	public NominatedCandidate fetchByIdNominatedcandidates(@PathVariable int id) throws NumberFormatException, NominatedCandidateNotFoundException
+	{
+		logger.info("Inside fetchById %s", id);
+		return nCServices.fetchById(id);
+	}
+
+	@GetMapping("/getAllNC")
+	@ApiOperation("Fetch all NomainatedCandidate Details")
+	public List<NominatedCandidate> viewNominatedCandidateList() {
+		logger.info("Fetching all NominatedCandidate records!!");
+		return nCServices.viewNominatedCandidateList();
+	}
+	
+	@PostMapping("/saveNC")
+	@ApiOperation("Add a NominatedCandidate details")
+	public ResponseEntity<NominatedCandidate> save(@Valid @RequestBody NominatedCandidate nominatedcandidate) {
+		logger.info("Adding a nominatedcandidate : " + nominatedcandidate);
+		NominatedCandidate e = nCServices.addNominatedCandidate(nominatedcandidate);
+		return new ResponseEntity<>(e, HttpStatus.CREATED);
+	}
+	
+	@PutMapping("/updateNC")
+	@ApiOperation("Update an Existing NominatedCandidate details")
+	public void update(@Valid @RequestBody NominatedCandidate nominatedcandidate) {
+		logger.info("Updating a NominatedCandidateDetails!!");
+		nCServices.updateNominatedCandidate(nominatedcandidate);
+	}
+	
+
+	@DeleteMapping("/deleteNC/{id}")
+	@ApiOperation("Delete an Existing NominatedCandidate details")
+	public ResponseEntity<Void> deleteNC(@PathVariable int id) throws NominatedCandidateNotFoundException {
+		logger.info("Deleting a NominatedCandidate!!");
+		nCServices.deleteNominatedCandidate(id);
+		return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+	}
+
 
 }

@@ -34,30 +34,30 @@ public class RegisteredSocietyVoterController {
 	@Autowired
 	private IRegisteredSocietyService service;// CustomerService is a dependency of CustomerContoller
 
-//	@GetMapping("/{name}")
-//	@ApiOperation("Greetings API")
-//	public String greetings(@PathVariable String name) {
-//		logger.info("Inside greetings!!");
-//		return "<h1>Welcome to Spring Boot " + name + "</h1>";
-//	}
-//
-//	@PostMapping("/save")
-//	@ApiOperation("Add a RegisteredSocietyVoters Record")
-//	public ResponseEntity<RegisteredSocietyVoters> save(@Valid @RequestBody RegisteredSocietyVoters registeredsociety) {
-//		logger.info("Adding a Society Details!! ");
-//		RegisteredSocietyVoters registeredsociety1 = service.addRegisteredSocietyVoters(registeredsociety);
-//		return new ResponseEntity<>(registeredsociety1, HttpStatus.CREATED);
-//	}
-//	
-//	
-//	
-//	
-//	@GetMapping("/getById/{id}")
-//	@ApiOperation("Get VoterRegistration ById")
-//	public RegisteredSocietyVoters fetchById(@PathVariable int id) throws NumberFormatException, RegisteredVoterNotFoundException {
-//		logger.info("Inside fetchById %s", id);
-//		return service.fetchById(id);
-//	}
+	@GetMapping("/{name}")
+	@ApiOperation("Greetings API")
+	public String greetings(@PathVariable String name) {
+		logger.info("Inside greetings!!");
+		return "<h1>Welcome to Spring Boot " + name + "</h1>";
+	}
+
+	@PostMapping("/save")
+	@ApiOperation("Add a RegisteredSocietyVoters Record")
+	public ResponseEntity<RegisteredSocietyVoters> save(@Valid @RequestBody RegisteredSocietyVoters registeredsociety) {
+		logger.info("Adding a Society Details!! ");
+		RegisteredSocietyVoters registeredsociety1 = service.addRegisteredSocietyVoters(registeredsociety);
+		return new ResponseEntity<>(registeredsociety1, HttpStatus.CREATED);
+	}
+	
+	
+	
+	
+	@GetMapping("/getById/{id}")
+	@ApiOperation("Get VoterRegistration ById")
+	public RegisteredSocietyVoters fetchById(@PathVariable int id) throws NumberFormatException, RegisteredVoterNotFoundException {
+		logger.info("Inside fetchById %s", id);
+		return service.fetchById(id);
+	}
 
 	@GetMapping("/getAll")
 	@ApiOperation("Fetch all RegisteredSocietyVoters Details")
@@ -65,21 +65,21 @@ public class RegisteredSocietyVoterController {
 		logger.info("Fetching all RegisteredSocietyVoters records!!");
 		return service.fetchAll();
 	}
-//	
-//	@GetMapping("/SearchByVoterId/{voterId}")
-//	@ApiOperation("search  RegisteredSocietyVoters Details")
-//	public RegisteredSocietyVoters searchByVoterId(@PathVariable int voterId) throws NumberFormatException, RegisteredVoterNotFoundException {
-//	logger.info("Inside SearchByVoterId %s", voterId);
-//	return service.fetchById(voterId);
-//	}
-//
-//
-//	@PutMapping("/update")
-//	@ApiOperation("Update an Existing RegisteredSocietyVoters details")
-//	public void update(@Valid @RequestBody RegisteredSocietyVoters registeredsocietyvoters) {
-//		logger.info("Updating a RegisteredSocietyVoterDetails!!");
-//		service.updateRegisteredVoterDetails(registeredsocietyvoters);
-//	}
+	
+	@GetMapping("/SearchByVoterId/{voterId}")
+	@ApiOperation("search  RegisteredSocietyVoters Details")
+	public RegisteredSocietyVoters searchByVoterId(@PathVariable int voterId) throws NumberFormatException, RegisteredVoterNotFoundException {
+	logger.info("Inside SearchByVoterId %s", voterId);
+	return service.fetchById(voterId);
+	}
+
+
+	@PutMapping("/update")
+	@ApiOperation("Update an Existing RegisteredSocietyVoters details")
+	public void update(@Valid @RequestBody RegisteredSocietyVoters registeredsocietyvoters) {
+		logger.info("Updating a RegisteredSocietyVoterDetails!!");
+		service.updateRegisteredVoterDetails(registeredsocietyvoters);
+	}
 
 	@DeleteMapping("/delete/{id}")
 	@ApiOperation("Delete an Existing RegisteredSocietyVoters Record")
