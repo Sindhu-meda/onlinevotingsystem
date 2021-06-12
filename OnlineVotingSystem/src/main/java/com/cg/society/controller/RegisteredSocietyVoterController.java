@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.cg.society.entities.CooperativeSociety;
 import com.cg.society.entities.RegisteredSocietyVoters;
 import com.cg.society.exception.RegisteredVoterNotFoundException;
 import com.cg.society.service.IRegisteredSocietyService;
@@ -25,7 +27,7 @@ import io.swagger.annotations.ApiOperation;
 
 
 @RestController
-@RequestMapping("/RegisteredSocietyVoters")
+@RequestMapping("/RegisteredSocietyVoter")
 public class RegisteredSocietyVoterController {
 	
 	
@@ -63,7 +65,7 @@ public class RegisteredSocietyVoterController {
 	@ApiOperation("Fetch all RegisteredSocietyVoters Details")
 	public List<RegisteredSocietyVoters> fetch() {
 		logger.info("Fetching all RegisteredSocietyVoters records!!");
-		return service.fetchAll();
+		return service.findAll();
 	}
 	
 	@GetMapping("/SearchByVoterId/{voterId}")

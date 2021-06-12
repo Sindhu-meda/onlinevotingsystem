@@ -21,8 +21,8 @@ import lombok.NoArgsConstructor;
 @Table(name="nominated_tbl")
 public class NominatedCandidate
 {
-	@OneToOne(targetEntity=VotedList.class,cascade=CascadeType.ALL)
-	private VotedList vote;
+//	@OneToOne(targetEntity=VotedList.class,cascade=CascadeType.ALL)
+//	private VotedList vote;
     @Id
 	//@GeneratedValue(strategy=GenerationType.AUTO)
     //@Column(name="candidateid")
@@ -34,13 +34,8 @@ public class NominatedCandidate
 	@NotNull
 	//@Pattern(regexp = "[a-z][A-Z][0-9]!@#{8}")
 	private String nominationFormNo;
-//   @OneToOne(targetEntity=VotedList.class,cascade=CascadeType.ALL)
-//   @JoinColumn(name="NcVl_fk",referencedColumnName="id")
-    
+
 } 
-//	@OneToMany(targetEntity=RegisteredSocietyVoters.class,cascade=CascadeType.ALL)
-//	@JoinColumn(name="NcRs_fk",referencedColumnName="id")
-//	private List<RegisteredSocietyVoters> cast;
 	
 	
 

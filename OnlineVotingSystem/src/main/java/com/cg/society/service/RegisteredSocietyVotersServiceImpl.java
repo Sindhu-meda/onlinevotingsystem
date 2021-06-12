@@ -22,20 +22,20 @@ public class RegisteredSocietyVotersServiceImpl implements IRegisteredSocietySer
 	
 	@Override
 	public RegisteredSocietyVoters voterRegistration(RegisteredSocietyVoters voter) {
-		// TODO Auto-generated method stub
+
 		logger.info("Inside addVoterRegistration method of RegisteredSocietyVotersServiceImpl");
 		return repository.save(voter);
 	}
 
 	@Override
 	public RegisteredSocietyVoters updateRegisteredVoterDetails(RegisteredSocietyVoters voter) {
-		// TODO Auto-generated method stub
+
 		return repository.save(voter);
 	}
 
 	@Override
 	public void  deleteRegisteredSocietyVoter(int voterId) throws RegisteredVoterNotFoundException {
-		// TODO Auto-generated method stub
+
 		Optional<RegisteredSocietyVoters> registeredsocietyvoters = repository.findByVoterId(voterId);
 		if(!registeredsocietyvoters.isPresent()) throw new RegisteredVoterNotFoundException();
 		repository.deleteById(voterId);
@@ -43,27 +43,26 @@ public class RegisteredSocietyVotersServiceImpl implements IRegisteredSocietySer
 
 	@Override
 	public List<RegisteredSocietyVoters> viewRegisteredVoterList() {
-		// TODO Auto-generated method stub
+
 		return null;
 	}
 
 	@Override
 	public RegisteredSocietyVoters searchByVoterID(int voterId) {
-		// TODO Auto-generated method stub
+
 		return repository.searchByVoterId(voterId);
 		
 	}
 
 	/*@Override
 	public RegisteredSocietyVoters loginValidate(String userid, String password) {
-		// TODO Auto-generated method stub
-		
+
 		return null;
 	}*/
 
 	@Override
 	public RegisteredSocietyVoters fetchById(int voterId) throws RegisteredVoterNotFoundException {
-		// TODO Auto-generated method stub
+
 		Optional<RegisteredSocietyVoters> registeredsocietyvoters = repository.findById(voterId);
 		if (!registeredsocietyvoters.isPresent())
 			throw new RegisteredVoterNotFoundException();
@@ -72,14 +71,14 @@ public class RegisteredSocietyVotersServiceImpl implements IRegisteredSocietySer
 	}
 
 	@Override
-	public List<RegisteredSocietyVoters> fetchAll() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<RegisteredSocietyVoters> findAll() {
+
+		return repository.findAll();
 	}
 
 	@Override
 	public RegisteredSocietyVoters addRegisteredSocietyVoters(RegisteredSocietyVoters registeredsociety) {
-		// TODO Auto-generated method stub
+
 		logger.info("inside addCustomer method of CustomerServiceImpl");
 		return repository.save(registeredsociety);
 	

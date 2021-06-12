@@ -17,11 +17,9 @@ public interface ICooperativeSocietyService {
 	
 	CooperativeSociety deleteSociety(int societyId) throws CooperativeSocietyNotFoundException ;
 	
-	List<CooperativeSociety> viewSocietiesList();
-	
 	CooperativeSociety viewSocietyById(int societyId) ;
 
-	CooperativeSociety fetchById(int id) throws CooperativeSocietyNotFoundException;
+	CooperativeSociety fetchById(int societyId) throws CooperativeSocietyNotFoundException;
 
 	List<CooperativeSociety> fetchAll();
 

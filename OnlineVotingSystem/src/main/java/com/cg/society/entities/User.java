@@ -48,12 +48,12 @@ public class User {
 	@Column(name = "mob")
 	private String contactno;
 	
-//	@OneToOne(cascade = CascadeType.ALL)
-//	private NominatedCandidate nominatedCandidate;
+	@OneToOne(cascade = CascadeType.ALL)
+	private NominatedCandidate nominatedCandidate;
 	
-//	@OneToOne(cascade = CascadeType.ALL)
-//	private ElectionResult electionResult;
-//	
+	@OneToOne(cascade = CascadeType.ALL)
+	private ElectionResult electionResult;
+	
 	
 	
 

@@ -30,7 +30,6 @@ public class CooperativeSocietyServiceImpl implements ICooperativeSocietyService
 	}
 
 	private void Logger(String string) {
-		// TODO Auto-generated method stub
 		
 	}
 
@@ -40,8 +39,6 @@ public class CooperativeSocietyServiceImpl implements ICooperativeSocietyService
 	}
 	
 
-
-
 	@Override
 	public CooperativeSociety deleteSociety(int societyId) throws CooperativeSocietyNotFoundException {
 		Optional<CooperativeSociety> cooperativeSociety = repository.findById(societyId);
@@ -50,22 +47,18 @@ public class CooperativeSocietyServiceImpl implements ICooperativeSocietyService
 		return cooperativeSociety.get();
 	}
 
-	@Override
-	public List<CooperativeSociety> viewSocietiesList() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 
 	@Override
 	public CooperativeSociety viewSocietyById(int societyId) {
-		// TODO Auto-generated method stub
+
 		return null;
 	}
 
 	
 	@Override
-	public CooperativeSociety  fetchById(int id) throws CooperativeSocietyNotFoundException{
-		Optional<CooperativeSociety> cooperativeSociety = repository.findById(id);
+	public CooperativeSociety  fetchById(int societyId) throws CooperativeSocietyNotFoundException{
+		Optional<CooperativeSociety> cooperativeSociety = repository.findById(societyId);
 		if (!cooperativeSociety.isPresent())
 			throw new CooperativeSocietyNotFoundException();
 		return cooperativeSociety.get();
@@ -75,3 +68,9 @@ public class CooperativeSocietyServiceImpl implements ICooperativeSocietyService
 	
 
 }
+
+
+
+
+	
+

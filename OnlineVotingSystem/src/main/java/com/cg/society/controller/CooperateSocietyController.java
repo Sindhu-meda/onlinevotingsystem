@@ -43,11 +43,11 @@ public class CooperateSocietyController {
 		return "<h1>Welcome to Spring Boot " + name + "</h1>";
 	}
 	
-	@GetMapping("/getById/{Id}")
-	@ApiOperation("Add Society Details ")
-	public CooperativeSociety fetchById(@PathVariable int id) throws NumberFormatException, CooperativeSocietyNotFoundException {
-		logger.info("Inside fetchById %s", id);
-		return service.fetchById(id);
+	@GetMapping("/getById/{societyId}")
+	@ApiOperation("Fetch Society Details ")
+	public CooperativeSociety fetchById(@PathVariable int societyId) throws NumberFormatException, CooperativeSocietyNotFoundException {
+		logger.info("Inside fetchById %s", societyId);
+		return service.fetchById(societyId);
 	}
 	
 	
@@ -68,9 +68,9 @@ public class CooperateSocietyController {
 	
 	@DeleteMapping("/delete/{id}")
 	@ApiOperation("Delete an Existing Cooperate Society Member Details")
-	public ResponseEntity<Void> delete(@PathVariable int id) throws CooperativeSocietyNotFoundException {
+	public ResponseEntity<CooperativeSociety> delete(@PathVariable int societyId) throws CooperativeSocietyNotFoundException {
 		logger.info("Deleting a customer!!");
-		service.deleteSociety(id);
+		service.deleteSociety(societyId);
 		return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
 	}
 
